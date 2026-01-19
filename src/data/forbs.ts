@@ -28,7 +28,8 @@ export const forbs: Plant[] = [{
         sun: ["full"],
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
-        widthFt: {min: .75, max: 1},
+        widthFt: {min: 1, max: 2},
+        svg: "/monarda-punctata.svg",
 },{
         id: "dalea-purpurea",
         scientificName: "Dalea purpurea",
@@ -38,6 +39,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
         widthFt: {min: 1.5, max: 2},
+        svg: "/dalea-purpurea.svg",
 },{
         id: "pycnanthemum-tenuifolium",
         scientificName: "Pycnanthemum tenuifolium",

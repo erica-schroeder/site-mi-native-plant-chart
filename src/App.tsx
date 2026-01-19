@@ -1,8 +1,11 @@
 import PlantChart from "./components/PlantChart"
+import { ScrollWrapper } from "./components/ScrollWrapper"
 
 function App() {
   return (
-    <PlantChart />
+    <ScrollWrapper>
+      <PlantChart />
+    </ScrollWrapper>
   )
 }
 
