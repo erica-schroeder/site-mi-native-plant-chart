@@ -10,7 +10,6 @@ export const forbs: Plant[] = [{
         heightFt: {min: 2, max: 2},
         widthFt: {min: 1, max: 3},
         svg: "/asclepias-tuberosa.svg",
-
 },{
         id: "asclepias-incarnata",
         scientificName: "Asclepias incarnata",
@@ -20,6 +19,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["wet", "med"],
         heightFt: {min: 4, max: 4},
         widthFt: {min: 1.5, max: 3},
+        svg: "/asclepias-incarnata.svg",
 },{
         id: "monarda-punctata",
         scientificName: "Monarda punctata",
