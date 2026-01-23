@@ -9,13 +9,13 @@ import { sortBy } from 'lodash-es';
 import { PlantRenderer } from './PlantRenderer';
 
 const CHART_WIDTH = 3000;
-const CHART_HEIGHT = 800;
+const CHART_HEIGHT = 1500;
 const MARGIN = { left: 60, right: 20, top: 20, bottom: 50 };
 
 const drawableWidth = CHART_WIDTH - MARGIN.left - MARGIN.right;
 const drawableHeight = CHART_HEIGHT - MARGIN.top - MARGIN.bottom;
 
-const xFeetRange = 25;
+const xFeetRange = 22;
 const pxPerFoot = drawableWidth / xFeetRange;
 
 const yFeetRange = drawableHeight / pxPerFoot;

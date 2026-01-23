@@ -56,8 +56,9 @@ export const forbs: Plant[] = [{
         plantType: "forb",
         sun: ["full"],
         soilMoisture: ["med"],
-        heightFt: {min: 6, max: 7},
-        widthFt: {min: 2, max: 4},
+        heightFt: {min: 6, max: 9},
+        widthFt: {min: 3, max: 5},
+        svg: "/silphium-perfoliatum.svg",
 },{
         id: "fragaria-virginiana",
         scientificName: "Fragaria virginiana",
