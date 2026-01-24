@@ -25,7 +25,7 @@ export const PlantRenderer = ({ plants, pxPerFoot }) => {
         return p.svg ? (
           <image
             key={p.id}
-            href={p.svg}
+            href={`${import.meta.env.BASE_URL}${p.svg}`}
             x={xPx}
             y={topY}
             width={widthPx}

@@ -9,7 +9,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2},
         widthFt: {min: 1, max: 3},
-        svg: "/asclepias-tuberosa.svg",
+        svg: "asclepias-tuberosa.svg",
 },{
         id: "asclepias-incarnata",
         scientificName: "Asclepias incarnata",
@@ -19,7 +19,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["wet", "med"],
         heightFt: {min: 4, max: 4},
         widthFt: {min: 1.5, max: 3},
-        svg: "/asclepias-incarnata.svg",
+        svg: "asclepias-incarnata.svg",
 },{
         id: "monarda-punctata",
         scientificName: "Monarda punctata",
@@ -29,7 +29,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
         widthFt: {min: 1, max: 2},
-        svg: "/monarda-punctata.svg",
+        svg: "monarda-punctata.svg",
 },{
         id: "dalea-purpurea",
         scientificName: "Dalea purpurea",
@@ -39,7 +39,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
         widthFt: {min: 1.5, max: 2},
-        svg: "/dalea-purpurea.svg",
+        svg: "dalea-purpurea.svg",
 },{
         id: "pycnanthemum-tenuifolium",
         scientificName: "Pycnanthemum tenuifolium",
@@ -58,7 +58,7 @@ export const forbs: Plant[] = [{
         soilMoisture: ["med"],
         heightFt: {min: 6, max: 9},
         widthFt: {min: 3, max: 5},
-        svg: "/silphium-perfoliatum.svg",
+        svg: "silphium-perfoliatum.svg",
 },{
         id: "fragaria-virginiana",
         scientificName: "Fragaria virginiana",
@@ -68,5 +68,15 @@ export const forbs: Plant[] = [{
         soilMoisture: ["med", "dry"],
         heightFt: {min: .5, max: .5},
         widthFt: {min: .25, max: .83},
-        svg: "/fragaria-virginiana.svg",
+        svg: "fragaria-virginiana.svg",
+},{
+        id: "echinacea-purpurea",
+        scientificName: "Echinacea purpurea",
+        commonName: "Purple Coneflower",
+        plantType: "forb",
+        sun: ["full", "part"],
+        soilMoisture: ["med", "dry"],
+        heightFt: {min: 4, max: 4},
+        widthFt: {min: 1.5, max: 2},
+        svg: "echinacea-purpurea.svg",
 }];
