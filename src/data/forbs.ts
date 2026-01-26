@@ -79,4 +79,14 @@ export const forbs: Plant[] = [{
         heightFt: {min: 4, max: 4},
         widthFt: {min: 1.5, max: 2},
         svg: "echinacea-purpurea.svg",
+},{
+        id: "liatris-spicata",
+        scientificName: "Liatris spicata",
+        commonName: "Marsh Blazing Star",
+        plantType: "forb",
+        sun: ["full"],
+        soilMoisture: ["wet", "med"],
+        heightFt: {min: 4, max: 6},
+        widthFt: {min: 2, max: 2},
+        svg: "liatris-spicata.svg",
 }];
