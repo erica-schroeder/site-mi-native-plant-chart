@@ -8,24 +8,27 @@ import {
 import { sortBy } from 'lodash-es';
 import { PlantRenderer } from './PlantRenderer';
 
-const CHART_WIDTH = 3000;
-const CHART_HEIGHT = 1000;
+const CHART_WIDTH = 2000;
 const MARGIN = { left: 60, right: 20, top: 20, bottom: 50 };
 
 const drawableWidth = CHART_WIDTH - MARGIN.left - MARGIN.right;
-const drawableHeight = CHART_HEIGHT - MARGIN.top - MARGIN.bottom;
+//const drawableHeight = CHART_HEIGHT - MARGIN.top - MARGIN.bottom;
 
 const xFeetRange = 30;
 const pxPerFoot = drawableWidth / xFeetRange;
 
-const yFeetRange = drawableHeight / pxPerFoot;
+const maxPlantHeight = Math.max(...plantsWithAverages.map(p => p.avgHeight ?? 0));
+const yFeetRange = maxPlantHeight + 1;
+
+const CHART_HEIGHT = yFeetRange * pxPerFoot + MARGIN.top + MARGIN.bottom;
+const drawableHeight = CHART_HEIGHT - MARGIN.top - MARGIN.bottom;
 
 export const PlantChartMui = () => {
     return (
         <ChartContainer
             width={CHART_WIDTH}
             height={CHART_HEIGHT}
-            margin={MARGIN}
+            //margin={MARGIN}
             xAxis={[
                 {
                     id: 'x',
