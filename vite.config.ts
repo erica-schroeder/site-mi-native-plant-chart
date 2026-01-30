@@ -6,6 +6,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   base: '/site-mi-native-plant-chart/',
+  build: {
+    target: "es2015"
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')

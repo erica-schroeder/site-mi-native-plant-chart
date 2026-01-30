@@ -1,25 +1,35 @@
 import { ChartsSurface, useXScale, useYScale } from '@mui/x-charts';
 
-export const PlantRenderer = ({ plants, pxPerFoot }) => {
+export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
   const xScale = useXScale('x');
   const yScale = useYScale('y');
 
   if (!xScale || !yScale) return null;
 
-  let cumulativeX = 0;
+  let cumulativeFeet = 0;
 
   return (
     <ChartsSurface>
-      {plants.map((p) => {
-        // compute pixel positions
-        const xPx = xScale(cumulativeX);
-        const widthPx = p.avgWidth * pxPerFoot;
-        const heightPx = p.avgHeight * pxPerFoot;
+      {plants.map((p, i) => {
+        const widthFeet = p.avgWidth ?? 1;
+        const heightFeet = p.avgHeight ?? 1;
 
-        const baselineY = yScale(0);       // Y=0 in pixels
-        const topY = baselineY - heightPx; // SVG y=top-left
+        const xPx = xScale(cumulativeFeet);
 
-        cumulativeX += p.avgWidth + .5;
+        const widthPx =
+          xScale(cumulativeFeet + widthFeet) - xScale(cumulativeFeet);
+
+        const baselineY = yScale(0);
+        const heightPx = yScale(0) - yScale(heightFeet);
+        const topY = baselineY - heightPx;
+
+        // Advance feet AFTER computing current plant
+        cumulativeFeet += widthFeet;
+
+        // Add spacing only BETWEEN plants
+        if (i < plants.length - 1) {
+          cumulativeFeet += spacingFt;
+        }
 
         // return SVG image or rectangle placeholder
         return p.svg ? (

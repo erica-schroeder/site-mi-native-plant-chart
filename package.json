@@ -14,13 +14,15 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@erica/mui-web": "file:../mui-web/erica-mui-web-0.1.0.tgz",
     "@mui/material": "^7.3.7",
     "@mui/x-charts": "^8.24.0",
     "d3": "^7.9.0",
     "d3-zoom": "^3.0.0",
     "lodash-es": "^4.17.22",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router": "^7.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
