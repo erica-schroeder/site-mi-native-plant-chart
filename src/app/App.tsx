@@ -4,6 +4,7 @@ import { Box, Paper } from "@mui/material"
 import type React from "react"
 import { Route, Routes } from "react-router"
 import Logo from "@/assets/logo.svg"
+import { PlantChartPage } from "@/pages/plantChart/PlantChartPage"
 
 
 export const App: React.FC = () => {
@@ -22,7 +23,7 @@ export const App: React.FC = () => {
       <Paper elevation={0} >
         <Routes>
           <Route path="/" element={
-            <PlantChartMui />
+            <PlantChartPage />
           }
           />
         </Routes>

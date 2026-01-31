@@ -65,6 +65,27 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
                 onClick={() => window.alert("hi")}
               />
             )}
+            <line
+              x1={xPx}
+              x2={xPx + widthPx}
+              y1={yScale(p.heightFt.max)}
+              y2={yScale(p.heightFt.max)}
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+              opacity={0.6}
+            />
+
+            <line
+              x1={xPx}
+              x2={xPx + widthPx}
+              y1={yScale(p.heightFt.min)}
+              y2={yScale(p.heightFt.min)}
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+              opacity={0.6}
+            />
 
             <PlantLabel plant={p} x={labelXPx} y={baselineY + labelYOffset} />
           </g>
