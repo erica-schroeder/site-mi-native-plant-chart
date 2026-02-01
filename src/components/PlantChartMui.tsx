@@ -11,6 +11,8 @@ import {
 import { sortBy } from 'lodash-es';
 import { PlantRenderer } from './PlantRenderer';
 import { useMemo, useState } from 'react';
+import { PlantSearch } from './PlantSearch';
+import { useChartFilter } from '@/contexts/ChartFilterProvider';
 
 const MARGIN = { left: 0, right: 70, top: 20, bottom: 150 };
 const SPACING_FT = .5;
@@ -40,6 +42,7 @@ function splitPlantsIntoRows(plants: Plant[], maxFeetPerRow: number) {
 }
 
 export const PlantChartMui = () => {
+    const { filteredPlants } = useChartFilter();
     const { ref: containerRef, width: containerWidth } = useContainerWidth<HTMLDivElement>();
     const [zoomFactor, setZoomFactor] = useState(1);
     const usableWidth = containerWidth - MARGIN.left - MARGIN.right;
@@ -60,7 +63,7 @@ export const PlantChartMui = () => {
     const effectivePxPerFoot = basePxPerFoot * zoomFactor;
     const maxFeetPerRow = Math.max(3, Math.floor(usableWidth / effectivePxPerFoot));
 
-    const plantRows = splitPlantsIntoRows(plantsWithAverages, maxFeetPerRow);
+    const plantRows = splitPlantsIntoRows(filteredPlants, maxFeetPerRow);
 
     const widestRowFeet = Math.max(
         ...plantRows.map(row =>
@@ -74,7 +77,6 @@ export const PlantChartMui = () => {
     return (
         <Stack
             ref={containerRef}
-            sx={{ px: 4 }}
             onContextMenu={(e) => e.preventDefault()}
         >
             <Stack direction="row">
@@ -83,7 +85,7 @@ export const PlantChartMui = () => {
                 <Button onClick={() => setZoomFactor(1)}>reset</Button>
             </Stack>
             {plantRows.map((rowPlants, rowIndex) => {
-                const maxPlantHeight = Math.max(...rowPlants.map(p => p.avgHeight ?? 0));
+                const maxPlantHeight = Math.max(...rowPlants.map(p => p.heightFt.max ?? 0));
                 const yFeetRange = maxPlantHeight + 1;
 
                 const chartHeight = yFeetRange * pxPerFoot + MARGIN.top + MARGIN.bottom;

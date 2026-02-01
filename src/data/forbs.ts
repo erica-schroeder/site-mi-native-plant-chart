@@ -9,7 +9,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2},
         widthFt: {min: 1, max: 3},
-        svg: "asclepias-tuberosa.svg",
+        illustration: {
+             svg: "asclepias-tuberosa.svg",
+             heightFt: 2,
+             widthFt: 2,
+        },
 },{
         id: "asclepias-incarnata",
         scientificName: "Asclepias incarnata",
@@ -19,7 +23,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["wet", "med"],
         heightFt: {min: 4, max: 4},
         widthFt: {min: 1.5, max: 3},
-        svg: "asclepias-incarnata.svg",
+        illustration: {
+             svg: "asclepias-incarnata.svg",
+             heightFt: 4,
+             widthFt: 2.25,
+        },
 },{
         id: "monarda-punctata",
         scientificName: "Monarda punctata",
@@ -29,7 +37,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
         widthFt: {min: 1, max: 2},
-        svg: "monarda-punctata.svg",
+        illustration: {
+             svg: "monarda-punctata.svg",
+             heightFt: 2.25,
+             widthFt: 1.5,
+        },
 },{
         id: "dalea-purpurea",
         scientificName: "Dalea purpurea",
@@ -39,7 +51,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["dry", "med"],
         heightFt: {min: 2, max: 2.5},
         widthFt: {min: 1.5, max: 2},
-        svg: "dalea-purpurea.svg",
+        illustration: {
+             svg: "dalea-purpurea.svg",
+             heightFt: 2.25,
+             widthFt: 1.75,
+        },
 },{
         id: "pycnanthemum-tenuifolium",
         scientificName: "Pycnanthemum tenuifolium",
@@ -58,7 +74,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["med"],
         heightFt: {min: 6, max: 9},
         widthFt: {min: 3, max: 5},
-        svg: "silphium-perfoliatum.svg",
+        illustration: {
+             svg: "silphium-perfoliatum.svg",
+             heightFt: 7.5,
+             widthFt: 4,
+        },
 },{
         id: "fragaria-virginiana",
         scientificName: "Fragaria virginiana",
@@ -68,7 +88,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["med", "dry"],
         heightFt: {min: .5, max: .5},
         widthFt: {min: .25, max: .83},
-        svg: "fragaria-virginiana.svg",
+        illustration: {
+             svg: "fragaria-virginiana.svg",
+             heightFt: .5,
+             widthFt: .54,
+        },
 },{
         id: "echinacea-purpurea",
         scientificName: "Echinacea purpurea",
@@ -78,7 +102,11 @@ export const forbs: Plant[] = [{
         soilMoisture: ["med", "dry"],
         heightFt: {min: 4, max: 4},
         widthFt: {min: 1.5, max: 2},
-        svg: "echinacea-purpurea.svg",
+        illustration: {
+             svg: "echinacea-purpurea.svg",
+             heightFt: 4,
+             widthFt: 1.75,
+        },
 },{
         id: "liatris-spicata",
         scientificName: "Liatris spicata",
@@ -88,5 +116,23 @@ export const forbs: Plant[] = [{
         soilMoisture: ["wet", "med"],
         heightFt: {min: 4, max: 6},
         widthFt: {min: 2, max: 2},
-        svg: "liatris-spicata.svg",
+        illustration: {
+             svg: "liatris-spicata.svg",
+             heightFt: 5,
+             widthFt: 2,
+        },
+},{
+        id: "solidago-speciosa",
+        scientificName: "Solidago speciosa",
+        commonName: "Showy Goldenrod",
+        plantType: "forb",
+        sun: ["full"],
+        soilMoisture: ["med", "dry"],
+        heightFt: {min: 3, max: 6},
+        widthFt: {min: 1, max: 3},
+        illustration: {
+             svg: "solidago-speciosa.svg",
+             heightFt: 4,
+             widthFt: 2,
+        },
 }];

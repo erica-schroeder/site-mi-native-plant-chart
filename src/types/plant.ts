@@ -17,5 +17,9 @@ export type Plant = {
         min: number;
         max: number;
     };
-    svg?: string;
+    illustration?: {
+        svg: string;
+        heightFt: number;
+        widthFt: number;
+    };
 };

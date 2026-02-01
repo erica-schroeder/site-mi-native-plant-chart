@@ -14,8 +14,8 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
   return (
     <ChartsSurface>
       {plants.map((p, i) => {
-        const widthFeet = p.avgWidth ?? 1;
-        const heightFeet = p.avgHeight ?? 1;
+        const widthFeet = p.illustration?.widthFt ?? p.avgWidth ?? 1;
+        const heightFeet = p.illustration?.heightFt ?? p.avgHeight ?? 1;
 
         const plantStartFeet = cumulativeFeet;
         const plantCenterFeet = plantStartFeet + widthFeet / 2;
@@ -42,10 +42,10 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
         // return SVG image or rectangle placeholder
         return (
             <g key={p.id}>
-              {p.svg ? (
+              {p.illustration?.svg ? (
               <image
                 key={p.id}
-                href={`${import.meta.env.BASE_URL}${p.svg}`}
+                href={`${import.meta.env.BASE_URL}${p.illustration.svg}`}
                 x={xPx}
                 y={topY}
                 width={widthPx}
@@ -65,6 +65,27 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
                 onClick={() => window.alert("hi")}
               />
             )}
+            <line
+              x1={xPx}
+              x2={xPx + widthPx}
+              y1={yScale(p.heightFt.max)}
+              y2={yScale(p.heightFt.max)}
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+              opacity={0.6}
+            />
+
+            <line
+              x1={xPx}
+              x2={xPx + widthPx}
+              y1={yScale(p.heightFt.min)}
+              y2={yScale(p.heightFt.min)}
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+              opacity={0.6}
+            />
 
             <PlantLabel plant={p} x={labelXPx} y={baselineY + labelYOffset} />
           </g>
