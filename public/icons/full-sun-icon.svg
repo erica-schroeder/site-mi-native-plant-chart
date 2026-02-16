@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="4.7032132mm"
+   height="4.7032175mm"
+   viewBox="0 0 4.7032132 4.7032175"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-36.274187,-90.072142)">
+    <circle
+       style="fill:#ffb936;fill-opacity:1;stroke:#e59500;stroke-width:0.197908;stroke-opacity:1"
+       id="path1-4"
+       cx="38.625793"
+       cy="92.423752"
+       r="1.0450425" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.625793,90.072144 v 1.006958"
+       id="path2-8" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="M 38.625793,93.768402 V 94.77536"
+       id="path2-8-9" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="m 40.288631,90.760914 -0.712027,0.712027"
+       id="path284" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="M 37.674982,93.374563 36.962955,94.08659"
+       id="path285" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="m 36.962955,90.760914 0.712027,0.712027"
+       id="path286" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="m 39.576604,93.374563 0.712027,0.712027"
+       id="path287" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="M 40.977401,92.423752 H 39.970443"
+       id="path288" />
+    <path
+       style="fill:none;stroke:#e59500;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+       d="M 37.281143,92.423752 H 36.274185"
+       id="path289" />
+  </g>
+</svg>

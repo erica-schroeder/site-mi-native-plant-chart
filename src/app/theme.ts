@@ -47,7 +47,8 @@ let theme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor: palette.appBar.main,
-                    color: palette.appBar.contrastText
+                    color: palette.appBar.contrastText,
+                    boxShadow: "none",
                 },
             },
         },

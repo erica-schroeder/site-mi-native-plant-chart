@@ -1,5 +1,5 @@
 import { plantsWithAverages } from "@/data/plants";
-import type { Color, Plant } from "@/types/plant";
+import type { Color, Plant, SoilMoisture, SunLevel } from "@/types/plant";
 import type { PlantFilters } from "@/types/plantFilters";
 import Fuse from "fuse.js";
 import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
@@ -10,6 +10,8 @@ const emptyFilters = {
     searchQuery: '',
     flowerColors: undefined,
     heightRange: [0, 10],
+    sunLevels: [],
+    soilMoistures: [],
 };
 
 export const ChartFilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -43,6 +45,24 @@ export const ChartFilterProvider: React.FC<{ children: ReactNode }> = ({ childre
       );
     }
 
+    // Sun filter
+    if (filters.sunLevels?.length > 0) {
+      result = result.filter(p =>
+        p.sun?.some(c =>
+          filters.sunLevels.includes(c)
+        )
+      );
+    }
+
+    // Soil moisture filter
+    if (filters.soilMoistures?.length > 0) {
+      result = result.filter(p =>
+        p.soilMoisture?.some(c =>
+          filters.soilMoistures.includes(c)
+        )
+      );
+    }
+
     // Height range filter
     if (filters.heightRange) {
       const [min, max] = filters.heightRange;
@@ -65,6 +85,8 @@ export const ChartFilterProvider: React.FC<{ children: ReactNode }> = ({ childre
     clearFilters,
     setSearchQuery: (searchQuery: string) => setFilters(f => ({ ...f, searchQuery })),
     setFlowerColors: (flowerColors: Color[]) => setFilters(f => ({ ...f, flowerColors })),
+    setSunLevels: (sunLevels: SunLevel[]) => setFilters(f => ({ ...f, sunLevels })),
+    setSoilMoistures: (soilMoistures: SoilMoisture[]) => setFilters(f => ({ ...f, soilMoistures })),
     setHeightRange: (heightRange: [number, number]) => setFilters(f => ({ ...f, heightRange })),
     filteredPlants,
   };

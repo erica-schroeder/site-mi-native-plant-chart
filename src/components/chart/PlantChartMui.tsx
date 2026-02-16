@@ -10,7 +10,8 @@ import {
 } from '@mui/x-charts';
 import { sortBy } from 'lodash-es';
 import { useMemo, useState } from 'react';
-import { PlantRenderer } from './PlantRenderer';
+import { PlantRenderer } from '@/components/chart/PlantRenderer';
+import { PlantDetailDisplayProvider } from '@/contexts/PlantDetailDisplayProvider';
 
 const MARGIN = { left: 0, right: 70, top: 20, bottom: 150 };
 const SPACING_FT = .5;
@@ -23,7 +24,7 @@ function splitPlantsIntoRows(plants: Plant[], maxFeetPerRow: number) {
     const sortedPlants = sortBy(plants, 'avgHeight').reverse();
 
     for (const plant of sortedPlants) {
-        const plantWidth = (plant.avgWidth ?? 1);
+        const plantWidth = Math.max(plant.avgWidth, 1);
         const nextWidth =
             currentRow.length === 0
                 ? plantWidth
@@ -88,7 +89,7 @@ export const PlantChartMui = () => {
             </Stack>
             {plantRows.map((rowPlants, rowIndex) => {
                 const maxPlantHeight = Math.max(...rowPlants.map(p => p.heightFt.max ?? 0));
-                const yFeetRange = maxPlantHeight + .5;
+                const yFeetRange = Math.max(maxPlantHeight, 1.5) + .5;
 
                 const chartHeight = yFeetRange * pxPerFoot + MARGIN.top + MARGIN.bottom;
 
@@ -126,7 +127,9 @@ export const PlantChartMui = () => {
 
                         <ChartsGrid horizontal />
 
-                        <PlantRenderer plants={rowPlants} spacingFt={SPACING_FT} />
+                        <PlantDetailDisplayProvider>
+                            <PlantRenderer plants={rowPlants} spacingFt={SPACING_FT} />
+                        </PlantDetailDisplayProvider>
                     </ChartContainer>
                 );
             })}

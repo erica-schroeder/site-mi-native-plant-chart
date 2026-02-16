@@ -1,16 +1,18 @@
 import { useChartFilter } from '@/contexts/ChartFilterProvider';
 import { Button, Stack, TextField } from '@mui/material';
 import React from 'react';
-import { FlowerColorSelect } from './FlowerColorSelect';
-import { HeightRangeSlider } from './HeightRangeSlider';
+import { FlowerColorSelect } from './filter/FlowerColorSelect';
+import { HeightRangeSlider } from './filter/HeightRangeSlider';
+import { SunLevelSelect } from './filter/SunLevelSelect';
+import { SoilMoistureSelect } from './filter/SoilMoistureSelect';
 
 
 export const PlantSearch: React.FC = () => {
-  const { filters, applyFilters, clearFilters, setSearchQuery, setFlowerColors, setHeightRange } = useChartFilter();
+  const { filters, applyFilters, clearFilters, setSearchQuery, setFlowerColors, setHeightRange, setSunLevels, setSoilMoistures } = useChartFilter();
 
   return (
     <Stack spacing={0} alignItems={"center"}>
-      <Stack direction="row" spacing={4} alignItems="center" sx={{ pb: 2}}>
+      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2}}>
         <TextField
           label="Common/scientific name contains"
           value={filters.searchQuery}
@@ -28,6 +30,16 @@ export const PlantSearch: React.FC = () => {
         <HeightRangeSlider
           onChange={setHeightRange}
           value={filters.heightRange}
+        />
+
+        <SunLevelSelect
+          onChange={setSunLevels}
+          value={filters.sunLevels}
+        />
+
+        <SoilMoistureSelect
+          onChange={setSoilMoistures}
+          value={filters.soilMoistures}
         />
       </Stack>
 

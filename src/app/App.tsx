@@ -1,4 +1,4 @@
-import { PlantChartMui } from "@/components/PlantChartMui"
+import { PlantChartMui } from "@/components/chart/PlantChartMui"
 import { AppBarNavLayout } from "@erica/mui-web"
 import { Box, Paper } from "@mui/material"
 import type React from "react"

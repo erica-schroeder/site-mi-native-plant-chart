@@ -1,7 +1,10 @@
 import { ChartsSurface, useXScale, useYScale } from '@mui/x-charts';
 import { PlantLabel } from './PlantLabel';
+import { usePlantDetailDisplay } from '@/contexts/PlantDetailDisplayProvider';
 
 export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
+  const { setActivePlant } = usePlantDetailDisplay();
+
   const xScale = useXScale('x');
   const yScale = useYScale('y');
 
@@ -31,7 +34,7 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
         const topY = baselineY - heightPx;
 
         // Advance feet AFTER computing current plant
-        cumulativeFeet += widthFeet;
+        cumulativeFeet += Math.max(widthFeet, 1);
 
         // Add spacing only BETWEEN plants
         if (i < plants.length - 1) {
@@ -51,6 +54,7 @@ export const PlantRenderer = ({ plants, spacingFt=.5 }) => {
                 width={widthPx}
                 height={heightPx}
                 preserveAspectRatio="none"
+                onClick={() => setActivePlant(p)}
                 //preserveAspectRatio="xMidYMax meet"
               />
             ) : (

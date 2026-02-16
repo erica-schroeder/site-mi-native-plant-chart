@@ -1,4 +1,4 @@
-import { PlantChartMui } from "@/components/PlantChartMui";
+import { PlantChartMui } from "@/components/chart/PlantChartMui";
 import { PlantSearch } from "@/components/PlantSearch";
 import { ChartFilterProvider } from "@/contexts/ChartFilterProvider";
 import { plantsWithAverages } from "@/data/plants";

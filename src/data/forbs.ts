@@ -164,7 +164,7 @@ export const forbs: Plant[] = [{
         scientificName: "Penstemon hirsutus",
         commonName: "Hairy Beardtongue",
         plantType: "forb",
-        sun: ["full, part"],
+        sun: ["full", "part"],
         soilMoisture: ["med", "dry"],
         heightFt: {min: 1, max: 2},
         widthFt: {min: 1, max: 1},
