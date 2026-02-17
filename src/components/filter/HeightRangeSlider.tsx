@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Slider, Stack, Typography } from '@mui/material';
+import { Slider } from '@mui/material';
 
 const MIN_HEIGHT = 0;
 const MAX_HEIGHT = 10;
@@ -16,21 +16,15 @@ export function HeightRangeSlider({ value, onChange }) {
   };
 
   return (
-    //<Stack spacing={2} sx={{ minWidth: 300 }}>
-      <FormControl sx={{ minWidth: 300, pr: 1}}>
-          <FormLabel sx={{ mb: 1 }}>
-              Height range: {value[0]}′ – {value[1]}′
-          </FormLabel>
-          <Slider
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              min={MIN_HEIGHT}
-              max={MAX_HEIGHT}
-              step={1}
-              marks={marks}
-              size="small"
-          />
-      </FormControl>
+    <Slider
+      value={value}
+      onChange={handleChange}
+      valueLabelDisplay="auto"
+      min={MIN_HEIGHT}
+      max={MAX_HEIGHT}
+      step={1}
+      marks={marks}
+      size="small"
+    />
   );
 }

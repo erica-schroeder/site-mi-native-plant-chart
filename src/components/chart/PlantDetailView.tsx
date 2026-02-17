@@ -15,7 +15,6 @@ export const PlantDetailView = ({ plant, open, ...props }) => {
                         href={googleSearchUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="Search for photos"
                     >
                         <CameraAltIcon />
                     </a>

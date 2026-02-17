@@ -1,7 +1,10 @@
-import { useChartFilter } from '@/contexts/ChartFilterProvider';
+import { PlantRenderer } from '@/components/chart/PlantRenderer';
+import { PlantDetailDisplayProvider } from '@/contexts/PlantDetailDisplayProvider';
+import { usePlantFilter } from '@/contexts/PlantFilterProvider';
+import { useZoom } from '@/contexts/ZoomProvider';
 import { useContainerWidth } from '@/hooks/useContainerWidth';
 import type { Plant } from '@/types/plant';
-import { Button, Stack, useMediaQuery, useTheme } from '@mui/material';
+import { Stack, useMediaQuery, useTheme } from '@mui/material';
 import {
     ChartContainer,
     ChartsGrid,
@@ -9,9 +12,7 @@ import {
     ChartsYAxis,
 } from '@mui/x-charts';
 import { sortBy } from 'lodash-es';
-import { useMemo, useState } from 'react';
-import { PlantRenderer } from '@/components/chart/PlantRenderer';
-import { PlantDetailDisplayProvider } from '@/contexts/PlantDetailDisplayProvider';
+import { useMemo } from 'react';
 
 const MARGIN = { left: 0, right: 70, top: 20, bottom: 150 };
 const SPACING_FT = .5;
@@ -45,9 +46,9 @@ function splitPlantsIntoRows(plants: Plant[], maxFeetPerRow: number) {
 }
 
 export const PlantChartMui = () => {
-    const { filteredPlants } = useChartFilter();
+    const { filteredPlants } = usePlantFilter();
     const { ref: containerRef, width: containerWidth } = useContainerWidth<HTMLDivElement>();
-    const [zoomFactor, setZoomFactor] = useState(1);
+    const {zoomFactor} = useZoom();
     const usableWidth = containerWidth - MARGIN.left - MARGIN.right;
 
     const theme = useTheme();
@@ -82,11 +83,6 @@ export const PlantChartMui = () => {
             ref={containerRef}
             onContextMenu={(e) => e.preventDefault()}
         >
-            <Stack direction="row">
-                <Button onClick={() => setZoomFactor(z => Math.min(z * 1.2, 3))}>zoom in</Button>
-                <Button onClick={() => setZoomFactor(z => Math.max(z / 1.2, .5))}>zoom out</Button>
-                <Button onClick={() => setZoomFactor(1)}>reset</Button>
-            </Stack>
             {plantRows.map((rowPlants, rowIndex) => {
                 const maxPlantHeight = Math.max(...rowPlants.map(p => p.heightFt.max ?? 0));
                 const yFeetRange = Math.max(maxPlantHeight, 1.5) + .5;

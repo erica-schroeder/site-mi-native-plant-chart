@@ -1,12 +1,8 @@
-import { FormControl, FormLabel, ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
 export const SunLevelSelect = ({ value, onChange, ...props }) => {
 
     return (
-      <FormControl>
-          <FormLabel>
-              Sun Level
-          </FormLabel>
         <ToggleButtonGroup
             value={value}
             onChange={(_, value) => onChange(value)}
@@ -31,6 +27,5 @@ export const SunLevelSelect = ({ value, onChange, ...props }) => {
             </ToggleButton>
 
         </ToggleButtonGroup>
-        </FormControl>
     );
 };

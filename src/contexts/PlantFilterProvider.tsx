@@ -4,7 +4,7 @@ import type { PlantFilters } from "@/types/plantFilters";
 import Fuse from "fuse.js";
 import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
 
-const ChartFilterContext = createContext(null);
+const PlantFilterContext = createContext(null);
 
 const emptyFilters = {
     searchQuery: '',
@@ -14,7 +14,7 @@ const emptyFilters = {
     soilMoistures: [],
 };
 
-export const ChartFilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const PlantFilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [filteredPlants, setFilteredPlants] = useState<Plant[]>(plantsWithAverages);
   const [filters, setFilters] = useState<PlantFilters>(emptyFilters);
 
@@ -92,15 +92,15 @@ export const ChartFilterProvider: React.FC<{ children: ReactNode }> = ({ childre
   };
 
   return (
-    <ChartFilterContext.Provider value={value}>
+    <PlantFilterContext.Provider value={value}>
       {children}
-    </ChartFilterContext.Provider>
+    </PlantFilterContext.Provider>
   );
 };
 
 
-export const useChartFilter = () => {
-  const ctx = useContext(ChartFilterContext);
-  if (!ctx) throw new Error('useChartFilter must be used inside a ChartFilterContext.');
+export const usePlantFilter = () => {
+  const ctx = useContext(PlantFilterContext);
+  if (!ctx) throw new Error('usePlantFilter must be used inside a PlantFilter context provider.');
   return ctx;
 };

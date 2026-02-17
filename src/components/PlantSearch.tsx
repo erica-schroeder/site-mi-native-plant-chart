@@ -1,46 +1,83 @@
-import { useChartFilter } from '@/contexts/ChartFilterProvider';
-import { Button, Stack, TextField } from '@mui/material';
+import { usePlantFilter } from '@/contexts/PlantFilterProvider';
+import { Button, FormControl, FormLabel, Stack, TextField } from '@mui/material';
 import React from 'react';
-import { FlowerColorSelect } from './filter/FlowerColorSelect';
+import { FlowerColorSelect2 } from './filter/FlowerColorSelect2';
 import { HeightRangeSlider } from './filter/HeightRangeSlider';
-import { SunLevelSelect } from './filter/SunLevelSelect';
 import { SoilMoistureSelect } from './filter/SoilMoistureSelect';
+import { SunLevelSelect } from './filter/SunLevelSelect';
 
 
 export const PlantSearch: React.FC = () => {
-  const { filters, applyFilters, clearFilters, setSearchQuery, setFlowerColors, setHeightRange, setSunLevels, setSoilMoistures } = useChartFilter();
+  const { filters, applyFilters, clearFilters, setSearchQuery, setFlowerColors, setHeightRange, setSunLevels, setSoilMoistures } = usePlantFilter();
 
   return (
     <Stack spacing={0} alignItems={"center"}>
-      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2}}>
-        <TextField
-          label="Common/scientific name contains"
-          value={filters.searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          variant="outlined"
-          size="small"
-          sx={{ minWidth: "40ch" }}
-        />
+      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
 
-        <FlowerColorSelect
-          onChange={setFlowerColors}
-          value={filters.flowerColors}
-        />
+        {/* Name */}
+        <FormControl>
+          <FormLabel>
+            Common or Scientific Name
+          </FormLabel>
+          <TextField
+            placeholder="contains..."
+            value={filters.searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            variant="outlined"
+            size="small"
+            sx={{ minWidth: "40ch" }}
+          />
+        </FormControl>
 
-        <HeightRangeSlider
-          onChange={setHeightRange}
-          value={filters.heightRange}
-        />
+        {/* Height */}
+        <FormControl sx={{ minWidth: 300, pr: 1 }}>
+          <FormLabel sx={{ mb: -1 }}>
+            Height range: {filters.heightRange[0]}′ – {filters.heightRange[1]}′
+          </FormLabel>
+          <HeightRangeSlider
+            onChange={setHeightRange}
+            value={filters.heightRange}
+          />
+        </FormControl>
+      </Stack>
 
-        <SunLevelSelect
-          onChange={setSunLevels}
-          value={filters.sunLevels}
-        />
+      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
 
-        <SoilMoistureSelect
-          onChange={setSoilMoistures}
-          value={filters.soilMoistures}
-        />
+        {/* Sun */}
+        <FormControl>
+          <FormLabel>
+            Sun Level
+          </FormLabel>
+          <SunLevelSelect
+            onChange={setSunLevels}
+            value={filters.sunLevels}
+          />
+        </FormControl>
+
+        {/* Soil */}
+        <FormControl>
+          <FormLabel>
+            Soil Moisture
+          </FormLabel>
+          <SoilMoistureSelect
+            onChange={setSoilMoistures}
+            value={filters.soilMoistures}
+          />
+        </FormControl>
+
+      </Stack>
+      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
+        {/* Flower color */}
+        <FormControl>
+          <FormLabel>
+            Flower Colors
+          </FormLabel>
+          <FlowerColorSelect2
+            onChange={setFlowerColors}
+            value={filters.flowerColors}
+          />
+        </FormControl>
+
       </Stack>
 
       <Stack direction="row" spacing={2}>
