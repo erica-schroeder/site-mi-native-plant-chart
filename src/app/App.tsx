@@ -1,31 +1,28 @@
-import { PlantChartMui } from "@/components/chart/PlantChartMui"
+import { ClickableLogo } from "@/components/ClickableLogo"
+import { AboutPage } from "@/pages/about/AboutPage"
+import { HomePage } from "@/pages/home/HomePage"
+import { PlantChartPage } from "@/pages/plantChart/PlantChartPage"
 import { AppBarNavLayout } from "@erica/mui-web"
-import { Box, Paper } from "@mui/material"
+import { Paper } from "@mui/material"
 import type React from "react"
 import { Route, Routes } from "react-router"
-import Logo from "@/assets/logo.svg"
-import { PlantChartPage } from "@/pages/plantChart/PlantChartPage"
 
 
 export const App: React.FC = () => {
   return (
     <AppBarNavLayout
       containerProps={{ disableGutters: true, maxWidth: false }}
-      logo={
-        <Box
-          component="img"
-          src={Logo}
-          sx={{ maxHeight: 100 }}
-        />
-      }
-      navItems={[]}
+      logo={<ClickableLogo />}
+      navItems={[
+        { label: "Plant Chart", to: "/plant-chart", },
+        { label: "About", to: "/about", },
+      ]}
     >
       <Paper elevation={0} >
         <Routes>
-          <Route path="/" element={
-            <PlantChartPage />
-          }
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/plant-chart" element={<PlantChartPage />} />
         </Routes>
       </Paper>
     </AppBarNavLayout>

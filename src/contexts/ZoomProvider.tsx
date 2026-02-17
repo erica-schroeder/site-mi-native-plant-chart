@@ -7,8 +7,8 @@ const BASE_ZOOM_FACTOR = 1;
 export const ZoomProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [zoomFactor, setZoomFactor] = useState(BASE_ZOOM_FACTOR);
 
-  const zoomIn = () => setZoomFactor((z) => Math.min(z + 0.1, 3));
-  const zoomOut = () => setZoomFactor((z) => Math.max(z - 0.1, 0.5));
+  const zoomIn = () => setZoomFactor((z) => Math.min(z * 1.2, 3));
+  const zoomOut = () => setZoomFactor((z) => Math.max(z / 1.2, 0.5));
   const zoomReset = () => setZoomFactor(BASE_ZOOM_FACTOR);
 
   const value = {

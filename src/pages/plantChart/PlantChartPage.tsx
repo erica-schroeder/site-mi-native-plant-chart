@@ -4,18 +4,20 @@ import { ZoomControls } from "@/components/ZoomControls";
 import { PlantFilterProvider } from "@/contexts/PlantFilterProvider";
 import { ZoomProvider } from "@/contexts/ZoomProvider";
 import { plantsWithAverages } from "@/data/plants";
-import { Box, Portal, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 export const PlantChartPage = () => {
     return (
         <Stack sx={{ px: 4 }}>
             <ZoomProvider>
                 <PlantFilterProvider>
-                    <PlantSearch allPlants={plantsWithAverages} />
+                    <Stack alignItems="center">
+                        <PlantSearch allPlants={plantsWithAverages} />
+                    </Stack>
 
-<Box sx={{ml: 4}}>
-                    <PlantChartMui />
-</Box>
+                    <Box sx={{ ml: 4 }}>
+                        <PlantChartMui />
+                    </Box>
 
                     <Box
                         sx={{

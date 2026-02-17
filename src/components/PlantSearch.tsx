@@ -6,13 +6,12 @@ import { HeightRangeSlider } from './filter/HeightRangeSlider';
 import { SoilMoistureSelect } from './filter/SoilMoistureSelect';
 import { SunLevelSelect } from './filter/SunLevelSelect';
 
-
 export const PlantSearch: React.FC = () => {
   const { filters, applyFilters, clearFilters, setSearchQuery, setFlowerColors, setHeightRange, setSunLevels, setSoilMoistures } = usePlantFilter();
 
   return (
-    <Stack spacing={0} alignItems={"center"}>
-      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
+    <Stack spacing={1} alignItems={"stretch"} sx={{ maxWidth: 800 }}>
+      <Stack direction={{xs: "column", sm: "row"}} spacing={5} alignItems="center" justifyContent="space-between" sx={{ pb: 2 }}>
 
         {/* Name */}
         <FormControl>
@@ -29,19 +28,6 @@ export const PlantSearch: React.FC = () => {
           />
         </FormControl>
 
-        {/* Height */}
-        <FormControl sx={{ minWidth: 300, pr: 1 }}>
-          <FormLabel sx={{ mb: -1 }}>
-            Height range: {filters.heightRange[0]}′ – {filters.heightRange[1]}′
-          </FormLabel>
-          <HeightRangeSlider
-            onChange={setHeightRange}
-            value={filters.heightRange}
-          />
-        </FormControl>
-      </Stack>
-
-      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
 
         {/* Sun */}
         <FormControl>
@@ -66,7 +52,17 @@ export const PlantSearch: React.FC = () => {
         </FormControl>
 
       </Stack>
-      <Stack direction="row" spacing={4} alignItems="center" flexWrap="wrap" sx={{ pb: 2 }}>
+      <Stack direction={{xs: "column", sm: "row"}} spacing={5} alignItems="center" justifyContent="space-between" sx={{ pb: 2 }}>
+        {/* Height */}
+        <FormControl sx={{ minWidth: 300, pr: 1 }}>
+          <FormLabel sx={{ mb: -1 }}>
+            Height range: {filters.heightRange[0]}′ – {filters.heightRange[1]}′
+          </FormLabel>
+          <HeightRangeSlider
+            onChange={setHeightRange}
+            value={filters.heightRange}
+          />
+        </FormControl>
         {/* Flower color */}
         <FormControl>
           <FormLabel>
@@ -80,7 +76,7 @@ export const PlantSearch: React.FC = () => {
 
       </Stack>
 
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} justifyContent="center">
         <Button
           variant="contained"
           disableElevation
