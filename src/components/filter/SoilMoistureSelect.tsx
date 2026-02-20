@@ -1,11 +1,13 @@
+import { usePlantFilter } from "@/contexts/PlantFilterProvider";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
-export const SoilMoistureSelect = ({ value, onChange, ...props }) => {
+export const SoilMoistureSelect = ({ ...props }) => {
+  const { filters, setSoilMoistures } = usePlantFilter();
 
     return (
         <ToggleButtonGroup
-            value={value}
-            onChange={(_, value) => onChange(value)}
+            value={filters.soilMoistures}
+            onChange={(_, value) => setSoilMoistures(value)}
             {...props}
         >
             <ToggleButton value="wet">

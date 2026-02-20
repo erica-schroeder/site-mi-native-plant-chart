@@ -1,5 +1,5 @@
 import { PlantChartMui } from "@/components/chart/PlantChartMui";
-import { PlantSearch } from "@/components/PlantSearch";
+import { PlantSearch } from "@/components/plantSearch/PlantSearch";
 import { ZoomControls } from "@/components/ZoomControls";
 import { PlantFilterProvider, usePlantFilter } from "@/contexts/PlantFilterProvider";
 import { ZoomProvider } from "@/contexts/ZoomProvider";
@@ -20,14 +20,19 @@ const PlantChartPageContent = () => {
                     <Typography sx={{ mt: 4, textAlign: 'center', color: 'gray' }}>
                         No plants match your filters. Try adjusting bloom color, height, sun, or soil requirements.
                     </Typography>
-                    : areFiltersEmpty()
+                    :
+                    areFiltersEmpty()
                         ?
                         <Typography sx={{ mt: 4, textAlign: 'center', color: 'gray' }}>
                             Use the filters above to see plants!
                         </Typography>
                         :
-
-                        <Box sx={{ ml: 4 }}>
+                        <Box
+                            sx={{
+                                ml: { xs: 0, md: 4 }, // remove left margin on small screens
+                                //minWidth: { xs: 900, md: "100%" },
+                            }}
+                        >
                             <PlantChartMui />
                         </Box>
                 }
@@ -41,12 +46,13 @@ const PlantChartPageContent = () => {
                         transform: "translateY(-50%)",
                         gap: 1,
                         zIndex: 10,
-                        padding: 1,              // space inside the box
-                        borderRadius: 2,         // rounded corners
-                        backgroundColor: "rgba(255,255,255,0.9)",  // semi-transparent white
-                        boxShadow: 1,            // subtle shadow for depth
-                        border: "1px solid rgba(0,0,0,0.1)",       // subtle border
-                        backdropFilter: "blur(4px)",               // slightly blur content behind
+                        padding: 1,
+                        borderRadius: 2,
+                        backgroundColor: "rgba(255,255,255,0.9)",
+                        boxShadow: 1,
+                        border: "1px solid rgba(0,0,0,0.1)",
+                        backdropFilter: "blur(4px)",
+                        display: { xs: "none", md: "block" },
                     }}
                 >
                     <ZoomControls />

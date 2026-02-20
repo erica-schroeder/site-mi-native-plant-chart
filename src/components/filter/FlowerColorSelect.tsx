@@ -1,76 +1,39 @@
+import { usePlantFilter } from '@/contexts/PlantFilterProvider';
 import type { Color } from '@/types/plant';
 import {
-    Autocomplete,
-    Box,
-    Chip,
-    FormControl,
-    FormLabel,
-    TextField
+    ToggleButton,
+    ToggleButtonGroup,
+    Tooltip
 } from '@mui/material';
 
 
-const FLOWER_COLORS: { label: string; value: Color, hex: string }[] = [
-    { value: 'red', label: 'Red', hex: '#d32f2f' },
-    { value: 'orange', label: 'Orange', hex: '#f57c00' },
-    { value: 'yellow', label: 'Yellow', hex: '#fbc02d' },
-    { value: 'green', label: 'Green', hex: '#388e3c' },
-    { value: 'blue', label: 'Blue', hex: '#1976d2' },
-    { value: 'purple', label: 'Purple', hex: '#7b1fa2' },
-    { value: 'pink', label: 'Pink', hex: '#c2185b' },
-    { value: 'white', label: 'White', hex: '#ffffff' },
+const FLOWER_COLORS: { label: string; value: Color }[] = [
+    { value: 'red', label: 'Red' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'yellow', label: 'Yellow' },
+    { value: 'green', label: 'Green' },
+    { value: 'blue', label: 'Blue' },
+    { value: 'purple', label: 'Purple' },
+    { value: 'pink', label: 'Pink' },
+    { value: 'white', label: 'White' },
 ];
 
-export function FlowerColorSelect({ value, onChange, ...props }) {
+export function FlowerColorSelect({ ...props }) {
+    const { filters, setFlowerColors } = usePlantFilter();
+
     return (
-        <FormControl>
-            <FormLabel>
-                Flower Colors
-            </FormLabel>
-            <Autocomplete
-                multiple
-                options={FLOWER_COLORS}
-                value={FLOWER_COLORS.filter(c => value?.includes(c.value))}
-                getOptionLabel={(option) => option.label}
-                onChange={(_, newValue) => {
-                    onChange?.(newValue.map(c => c.value));
-                }}
-                renderValue={(tagValue, getTagProps) =>
-                    tagValue.map((option, index) => (
-                        <Chip
-                            label={option.label}
-                            size="small"
-                            {...getTagProps({ index })}
-                            sx={{
-                                backgroundColor: option.hex,
-                                color: option.value === 'white' ? 'black' : 'white',
-                                fontWeight: 500,
-                            }}
-                        />
-                    ))
-                }
-                renderOption={(props, option) => (
-                    <Box
-                        component="li"
-                        {...props}
-                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
-                    >
-                        <Box
-                            sx={{
-                                width: 16,
-                                height: 16,
-                                borderRadius: '50%',
-                                backgroundColor: option.hex,
-                                border: option.value === "white" ? '1px solid #ccc' : 'none',
-                            }}
-                        />
-                        {option.label}
-                    </Box>
-                )}
-                renderInput={(params) => (
-                    <TextField {...params} placeholder="Choose one or more colors" size="small" />
-                )}
-                sx={{ minWidth: 300 }}
-            />
-        </FormControl>
+        <ToggleButtonGroup
+            value={filters.flowerColors}
+            onChange={(_, value) => setFlowerColors(value)}
+            {...props}
+        >
+            {FLOWER_COLORS.map(color =>
+                <ToggleButton value={color.value}>
+                    <Tooltip title={color.label}>
+                        <img src={`icons/flower-${color.value}-icon.svg`} width={30} height={20} style={{ transform: "scale(1.2)", display: "block" }} />
+                    </Tooltip>
+                </ToggleButton>
+            )}
+        </ToggleButtonGroup>
     );
 }

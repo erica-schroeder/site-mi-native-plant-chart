@@ -1,3 +1,4 @@
+import { usePlantFilter } from '@/contexts/PlantFilterProvider';
 import { Slider } from '@mui/material';
 
 const MIN_HEIGHT = 0;
@@ -8,16 +9,18 @@ const marks = Array.from({ length: MAX_HEIGHT - MIN_HEIGHT + 1 }, (_, i) => ({
   label: `${i + MIN_HEIGHT}′`,
 }));
 
-export function HeightRangeSlider({ value, onChange }) {
+export function HeightRangeSlider() {
+  const { filters, setHeightRange } = usePlantFilter();
+
   const handleChange = (_: Event, newValue: number | number[]) => {
     if (Array.isArray(newValue)) {
-      onChange([newValue[0], newValue[1]]);
+      setHeightRange([newValue[0], newValue[1]]);
     }
   };
 
   return (
     <Slider
-      value={value}
+      value={filters.heightRange}
       onChange={handleChange}
       valueLabelDisplay="auto"
       min={MIN_HEIGHT}

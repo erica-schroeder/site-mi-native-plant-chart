@@ -59,7 +59,7 @@ export const PlantChartMui = () => {
 
     // Pick a base px/ft depending on screen size
     const basePxPerFoot = useMemo(() => {
-        if (isXs) return 40;
+        if (isXs) return 60;
         if (isSm) return 70;
         return 80;
     }, [isXs, isSm, isMdUp]);
@@ -85,7 +85,7 @@ export const PlantChartMui = () => {
         >
             {plantRows.map((rowPlants, rowIndex) => {
                 const maxPlantHeight = Math.max(...rowPlants.map(p => p.heightFt.max ?? 0));
-                const yFeetRange = Math.max(maxPlantHeight, 1.5) + .5;
+                const yFeetRange = Math.max(maxPlantHeight) + .5;
 
                 const chartHeight = yFeetRange * pxPerFoot + MARGIN.top + MARGIN.bottom;
 

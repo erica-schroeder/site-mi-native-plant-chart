@@ -17,7 +17,9 @@ export const App: React.FC = () => {
         { label: "About", to: "/about", },
         { label: "Plant Chart", to: "/plant-chart", },
       ]}
-      navItemDivider={<Typography>•</Typography>}
+      navItemDivider={
+      <Typography>•</Typography>
+    }
     >
       <Paper elevation={0} >
         <Routes>

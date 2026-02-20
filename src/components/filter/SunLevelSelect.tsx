@@ -1,11 +1,13 @@
+import { usePlantFilter } from "@/contexts/PlantFilterProvider";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
-export const SunLevelSelect = ({ value, onChange, ...props }) => {
+export const SunLevelSelect = ({ ...props }) => {
+  const { filters, setSunLevels } = usePlantFilter();
 
     return (
         <ToggleButtonGroup
-            value={value}
-            onChange={(_, value) => onChange(value)}
+            value={filters.sunLevels}
+            onChange={(_, value) => setSunLevels(value)}
             {...props}
         >
             <ToggleButton value="full">
