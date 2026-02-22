@@ -180,4 +180,22 @@ export const forbs: Plant[] = [{
              heightFt: 1.5,
              widthFt: 1,
         },
+},{
+        id: "aquilegia-canadensis",
+        scientificName: "Aquilegia canadensis",
+        commonName: "Wild Columbine",
+        plantType: "forb",
+        sun: ["full", "part", "shade"],
+        soilMoisture: ["med", "dry"],
+        heightFt: {min: 1, max: 3},
+        widthFt: {min: 1, max: 1},
+        flowerColor: ["red"],
+        traits: {
+             keystone: true,
+        },
+        illustration: {
+             svg: "aquilegia-canadensis.svg",
+             heightFt: 2,
+             widthFt: 1,
+        },
 }];
