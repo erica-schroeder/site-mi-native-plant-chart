@@ -6,7 +6,6 @@ import { HeightRangeSlider } from '../filter/HeightRangeSlider';
 import { PlantNameSearch } from '../filter/PlantNameSearch';
 import { SoilMoistureSelect } from '../filter/SoilMoistureSelect';
 import { SunLevelSelect } from '../filter/SunLevelSelect';
-import { TraitIndicators } from '../chart/TraitIndicators';
 import { TraitSelect } from '../filter/TraitSelect';
 
 export const PlantSearchLg: React.FC = () => {
@@ -23,12 +22,7 @@ export const PlantSearchLg: React.FC = () => {
           <PlantNameSearch />
         </FormControl>
 
-        <FormControl>
-          <FormLabel>
-            Flower Colors
-          </FormLabel>
-          <FlowerColorSelect />
-        </FormControl>
+        <FlowerColorSelect />
 
       </Stack>
 
@@ -39,29 +33,14 @@ export const PlantSearchLg: React.FC = () => {
           </FormLabel>
           <HeightRangeSlider />
         </FormControl>
-        <FormControl>
-          <FormLabel>
-            Sun Level
-          </FormLabel>
-          <SunLevelSelect />
-        </FormControl>
 
-        <FormControl>
-          <FormLabel>
-            Soil Moisture
-          </FormLabel>
-          <SoilMoistureSelect />
-        </FormControl>
+        <SunLevelSelect />
+        <SoilMoistureSelect />
 
       </Stack>
 
-      <Stack direction={{xs: "column", sm: "row"}} spacing={5} alignItems="center" justifyContent="space-between" sx={{ pb: 2 }}>
-        <FormControl>
-          <FormLabel>
-            Traits
-          </FormLabel>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={5} alignItems="center" justifyContent="space-between" sx={{ pb: 2 }}>
           <TraitSelect />
-        </FormControl>
       </Stack>
 
       <Stack direction="row" spacing={2} justifyContent="center">

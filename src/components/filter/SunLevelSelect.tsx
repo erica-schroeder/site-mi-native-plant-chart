@@ -1,5 +1,7 @@
 import { usePlantFilter } from "@/contexts/PlantFilterContext";
 import { iconMap } from "@/theme/icons";
+import { FormControl } from "@mui/material";
+import { FilterLabel } from "./FilterLabel";
 import { ToggleButtonFilter } from "./ToggleButtonFilter";
 
 const options = [{
@@ -16,16 +18,21 @@ const options = [{
     icon: iconMap.sun.shade,
 }];
 
-export const SunLevelSelect = ({ ...props }) => {
+export const SunLevelSelect = ({ size, ...props }) => {
     const { filters, setSunLevels } = usePlantFilter();
 
     return (
-        <ToggleButtonFilter
-            options={options}
-
-            value={filters.sunLevels}
-            onChange={(_, value) => setSunLevels(value)}
-            {...props}
-        />
+        <FormControl>
+            <FilterLabel size={size}>
+                Sun Level
+            </FilterLabel>
+            <ToggleButtonFilter
+                options={options}
+                value={filters.sunLevels}
+                onChange={(_, value) => setSunLevels(value)}
+                size={size}
+                {...props}
+            />
+        </FormControl>
     );
 };

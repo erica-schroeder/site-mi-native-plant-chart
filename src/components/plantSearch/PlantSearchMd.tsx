@@ -33,34 +33,12 @@ export const PlantSearchMd: React.FC = () => {
         <HeightRangeSlider />
       </FormControl>
 
-      <FormControl >
-        <Label>
-          Flower Colors
-        </Label>
-        <FlowerColorSelect />
-      </FormControl>
+      <FlowerColorSelect size="md" />
 
       <Stack direction="row" justifyContent="space-between">
-        <FormControl>
-          <Label>
-            Sun Level
-          </Label>
-          <SunLevelSelect />
-        </FormControl>
-
-        <FormControl>
-          <Label>
-            Soil Moisture
-          </Label>
-          <SoilMoistureSelect />
-        </FormControl>
-
-        <FormControl>
-          <Label>
-            Traits
-          </Label>
-          <TraitSelect />
-        </FormControl>
+          <SunLevelSelect size="md" />
+          <SoilMoistureSelect size="md" />
+          <TraitSelect size="md" />
       </Stack>
 
       <Stack direction="row" justifyContent="center" sx={{ pt: 2 }}>

@@ -4,9 +4,22 @@ import {
     Tooltip
 } from '@mui/material';
 
-export function ToggleButtonFilter({ options, ...props }) {
+const sizeConfig = {
+    xs: {
+        toggleButtonSize: "small",
+    },
+    md: {
+    },
+    lg: {
+    }
+};
+
+export function ToggleButtonFilter({ options, size, ...props }) {
+    console.log("size is ", size)
+    const config = sizeConfig[size ?? "lg"];
     return (
         <ToggleButtonGroup
+            size={config?.toggleButtonSize}
             {...props}
         >
             {options.map(o =>

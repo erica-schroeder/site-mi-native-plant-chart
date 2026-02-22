@@ -1,21 +1,46 @@
 import { usePlantFilter } from "@/contexts/PlantFilterContext";
-import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
+import { iconMap } from "@/theme/icons";
+import { FormControl, Stack } from "@mui/material";
+import { useState } from "react";
+import { FilterLabel } from "./FilterLabel";
+import { ToggleButtonFilter } from "./ToggleButtonFilter";
+import { TraitsDialog } from "./TraitsDialog";
 
-export const TraitSelect = ({ ...props }) => {
-  const { filters, setTraits } = usePlantFilter();
+type TraitFilterProps = {
+    size?: "xs" | "md" | "lg";
+}
 
+const options = [{
+    value: "keystone",
+    tooltip: "Keystone species",
+    icon: iconMap.traits.keystone,
+}];
+
+export const TraitSelect = ({ size }: TraitFilterProps) => {
+    const { filters, setTraits } = usePlantFilter();
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    console.log("size is ", size)
     return (
-        <ToggleButtonGroup
-            value={filters.traits}
-            onChange={(_, value) => setTraits(value)}
-            {...props}
-        >
-            <Tooltip title="Keystone species" arrow>
-                <ToggleButton value="keystone">
-                    <img src="icons/keystone-icon.svg" width={30} height={20} style={{ transform: "scale(1.1)", display: "block" }} />
-                </ToggleButton>
-            </Tooltip>
-
-        </ToggleButtonGroup>
+        <>
+            <FormControl>
+                <Stack direction="row" spacing={.5} alignItems="center">
+                    <FilterLabel
+                        size={size}
+                        showInfoIcon={true}
+                        onInfoIconClicked={() => setDialogOpen(true)}
+                    >
+                        Traits
+                    </FilterLabel>
+                </Stack>
+                <ToggleButtonFilter
+                    value={filters.traits}
+                    onChange={(_, value) => setTraits(value)}
+                    options={options}
+                    size={size}
+                />
+            </FormControl>
+            <TraitsDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
+        </>
     );
 };

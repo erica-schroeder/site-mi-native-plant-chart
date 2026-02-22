@@ -64,7 +64,7 @@ export const iconMap = {
         keystone: {
             src: "icons/keystone-icon.svg",
             chartScale: 1.0,
-            uiScale: 1.1,
+            uiScale: 1.2,
         },
     }
 };

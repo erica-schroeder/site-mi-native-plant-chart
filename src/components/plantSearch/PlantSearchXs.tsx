@@ -24,12 +24,12 @@ export const PlantSearchXs: React.FC = () => {
           Common or Scientific Name
         </Label>
         <PlantNameSearch
-  InputProps={{
-    sx: {
-      height: 36,
-      fontSize: 12,
-    },
-  }}
+          InputProps={{
+            sx: {
+              height: 36,
+              fontSize: 12,
+            },
+          }}
         />
       </FormControl>
 
@@ -40,34 +40,12 @@ export const PlantSearchXs: React.FC = () => {
         <HeightRangeSlider />
       </FormControl>
 
-      <FormControl >
-        <Label>
-          Flower Colors
-        </Label>
-        <FlowerColorSelect size="small" />
-      </FormControl>
+      <FlowerColorSelect size="xs" />
 
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <FormControl>
-          <Label>
-            Sun Level
-          </Label>
-          <SunLevelSelect size="small" />
-        </FormControl>
-
-        <FormControl>
-          <Label>
-            Soil Moisture
-          </Label>
-          <SoilMoistureSelect size="small" />
-        </FormControl>
-
-        <FormControl>
-          <Label>
-            Traits
-          </Label>
-          <TraitSelect size="small" />
-        </FormControl>
+        <SunLevelSelect size="xs" />
+        <SoilMoistureSelect size="xs" />
+        <TraitSelect size="xs" />
       </Stack>
 
       <Stack direction="row" justifyContent="center" sx={{ pt: 2 }}>

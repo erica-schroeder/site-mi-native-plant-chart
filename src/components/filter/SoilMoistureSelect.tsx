@@ -1,6 +1,8 @@
 import { usePlantFilter } from "@/contexts/PlantFilterContext";
 import { iconMap } from "@/theme/icons";
 import { ToggleButtonFilter } from "./ToggleButtonFilter";
+import { FormControl } from "@mui/material";
+import { FilterLabel } from "./FilterLabel";
 
 const options = [{
     value: "wet",
@@ -16,15 +18,21 @@ const options = [{
     icon: iconMap.soil.dry,
 }];
 
-export const SoilMoistureSelect = ({ ...props }) => {
+export const SoilMoistureSelect = ({ size, ...props }) => {
     const { filters, setSoilMoistures } = usePlantFilter();
 
     return (
-        <ToggleButtonFilter
-            options={options}
-            value={filters.soilMoistures}
-            onChange={(_, value) => setSoilMoistures(value)}
-            {...props}
-        />
+        <FormControl>
+            <FilterLabel size={size}>
+                Soil Moisture
+            </FilterLabel>
+            <ToggleButtonFilter
+                options={options}
+                value={filters.soilMoistures}
+                onChange={(_, value) => setSoilMoistures(value)}
+                size={size}
+                {...props}
+            />
+        </FormControl>
     );
 };

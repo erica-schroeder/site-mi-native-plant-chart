@@ -1,6 +1,8 @@
 import { usePlantFilter } from '@/contexts/PlantFilterContext';
 import { iconMap } from '@/theme/icons';
 import { ToggleButtonFilter } from './ToggleButtonFilter';
+import { FormControl } from '@mui/material';
+import { FilterLabel } from './FilterLabel';
 
 const options = [{
     value: 'red',
@@ -36,15 +38,21 @@ const options = [{
     icon: iconMap.flowerColor.white,
 }];
 
-export function FlowerColorSelect({ ...props }) {
+export function FlowerColorSelect({ size, ...props }) {
     const { filters, setFlowerColors } = usePlantFilter();
 
     return (
-        <ToggleButtonFilter
-            options={options}
-            value={filters.flowerColors}
-            onChange={(_, value) => setFlowerColors(value)}
-            {...props}
-        />
+        <FormControl>
+            <FilterLabel size={size}>
+                Flower Colors
+            </FilterLabel>
+            <ToggleButtonFilter
+                options={options}
+                value={filters.flowerColors}
+                onChange={(_, value) => setFlowerColors(value)}
+                size={size}
+                {...props}
+            />
+        </FormControl>
     );
 };
