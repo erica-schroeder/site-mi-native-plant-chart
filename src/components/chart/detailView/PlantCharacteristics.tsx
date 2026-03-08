@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
-import { SunSoilRequirements } from "./SunSoilRequirements";
 import { DetailField } from "./DetailField";
 import { HostPlantInfo } from "./HostPlantInfo";
+import { SunSoilRequirements } from "./SunSoilRequirements";
 
 const formatFt = (ft: number) => {
     if (ft < 1) return `${Math.round(ft * 12)}"`;
@@ -23,7 +23,13 @@ export const PlantCharacteristics = ({ plant }) => {
 
             <DetailField label="Spread">
                 <Typography>
-                {formatFt(plant.widthFt.min)} - {formatFt(plant.widthFt.max)}
+                    {formatFt(plant.widthFt.min)} - {formatFt(plant.widthFt.max)}
+                </Typography>
+            </DetailField>
+
+            <DetailField label="Bloom">
+                <Typography sx={{ textTransform: "capitalize" }}>
+                    {plant.bloomMonths.join(", ")}
                 </Typography>
             </DetailField>
 
