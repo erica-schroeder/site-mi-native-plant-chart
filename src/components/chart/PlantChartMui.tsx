@@ -34,10 +34,13 @@ function splitPlantsIntoRows(plants: Plant[], maxFeetPerRow: number) {
             rows.push(currentRow);
             currentRow = [];
             currentFeet = 0;
+            currentFeet += plantWidth;
+        }
+        else {
+            currentFeet += nextWidth;
         }
 
         currentRow.push(plant);
-        currentFeet += nextWidth;
     }
 
     if (currentRow.length > 0) rows.push(currentRow);
@@ -84,7 +87,7 @@ export const PlantChartMui = ({ plants }) => {
         >
             {plantRows.map((rowPlants, rowIndex) => {
                 const maxPlantHeight = Math.max(...rowPlants.map(p => p.heightFt.max ?? 0));
-                const yFeetRange = Math.max(maxPlantHeight) + .5;
+                const yFeetRange = Math.max(maxPlantHeight) + 1;
 
                 const chartHeight = yFeetRange * pxPerFoot + MARGIN.top + MARGIN.bottom;
 

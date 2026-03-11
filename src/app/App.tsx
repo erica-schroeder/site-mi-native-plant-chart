@@ -7,6 +7,7 @@ import { Paper, Typography } from "@mui/material"
 import type React from "react"
 import { Route, Routes } from "react-router"
 import { Footer } from "./Footer"
+import { NotFoundPage } from "@/pages/not-found/NotFoundPage"
 
 
 export const App: React.FC = () => {
@@ -16,7 +17,7 @@ export const App: React.FC = () => {
       logo={<ClickableLogo />}
       navItems={[
         { label: "About", to: "/about", },
-        { label: "Plant Chart", to: "/plant-chart", },
+        { label: "Find Plants", to: "/find-plants", },
       ]}
       navItemDivider={
         <Typography>•</Typography>
@@ -27,7 +28,8 @@ export const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/plant-chart" element={<PlantChartPage />} />
+          <Route path="/find-plants" element={<PlantChartPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Paper>
     </AppBarNavLayout>

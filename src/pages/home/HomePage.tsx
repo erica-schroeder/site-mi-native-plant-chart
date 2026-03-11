@@ -15,18 +15,14 @@ export const HomePage = () => {
       }}
     >
       <Stack spacing={3}>
-        {/* Headline */}
         <Typography variant="h4" component="h1">
           Welcome to Native Notebook!
         </Typography>
 
-        {/* Intro paragraph */}
         <Typography variant="body1">
           Thanks for visiting! This site is designed to help you explore and compare <strong>Michigan native plants</strong>. Browse plants by height, bloom color, sun and soil needs, and more.
         </Typography>
 
-
-        {/* What you can do */}
         <Box>
           <Typography variant="body1" fontWeight="bold" gutterBottom>
             What you can do here:
@@ -38,27 +34,22 @@ export const HomePage = () => {
           </ul>
         </Box>
 
-        {/* Disclaimer */}
         <Typography variant="body1">
           Note: This site is a <strong>work in progress</strong> and is being updated regularly.
         </Typography>
 
-        {/* Contact */}
         <Typography variant="body1">
-            Questions or feedback? Reach out to <EmailLink user="hello" />!
+          Questions or feedback? Reach out to <EmailLink user="hello" />!
         </Typography>
 
-
-        {/* Call-to-action button */}
         <Button
           variant="contained"
           size="large"
-          onClick={() => navigate("/plant-chart")}
+          onClick={() => navigate("/find-plants")}
         >
-          Explore the Chart!
+          Start Exploring!
         </Button>
       </Stack>
     </Box>
   );
-
 };

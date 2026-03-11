@@ -34,7 +34,7 @@ const PlantChartPageContent = () => {
     }, []);
 
     return (
-        <Stack sx={{ px: 4, mt: 2 }}>
+        <Stack sx={{ px: {xs: 0, xl: 4}, mt: 2 }}>
 
             <Stack direction="row" alignItems="center" justifyContent="center">
                 <Typography variant="h5" component="h1">
