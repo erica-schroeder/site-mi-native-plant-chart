@@ -16,8 +16,8 @@ export const forbs: Plant[] = [{
         ],
         illustration: {
              svg: "asclepias-tuberosa.svg",
-             heightFt: 2,
-             widthFt: 2,
+             heightFt: 1.5,
+             widthFt: 1.5,
         },
 },{
         id: "asclepias-incarnata",
@@ -265,12 +265,17 @@ export const forbs: Plant[] = [{
         sun: ["full", "part"],
         soilMoisture: ["dry"],
         heightFt: {min: 1, max: 2},
-        widthFt: {min: 1, max: 1},
+        widthFt: {min: 1.5, max: 1.5},
         flowerColor: ["blue"],
         bloomMonths: ["may", "jun", "jul"],
         hostCaterpillars: [
           "plebejus-samuelis",
         ],
+        illustration: {
+             svg: "lupinus-perennis.svg",
+             heightFt: 2,
+             widthFt: 1.5,
+        },
 },{
         id: "zizia-aurea",
         scientificName: "Zizia aurea",
@@ -318,7 +323,12 @@ export const forbs: Plant[] = [{
         widthFt: {min: .5, max: 1},
         flowerColor: ["red"],
         bloomMonths: ["apr", "may", "jun"],
-},{
+        illustration: {
+             svg: "asarum-canadense.svg",
+             heightFt: .5,
+             widthFt: 1,
+        },
+        }, {
         id: "baptisia-australis",
         scientificName: "Baptisia australis",
         commonName: "Blue Wild Indigo",
@@ -385,6 +395,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1, max: 1},
         flowerColor: ["yellow"],
         bloomMonths: ["may", "jun", "jul", "aug"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "coreopsis-tripteris",
         scientificName: "Coreopsis tripteris",
@@ -462,6 +475,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 3, max: 4},
         flowerColor: ["pink"],
         bloomMonths: ["jul", "aug", "sep"],
+        traits: {
+            keystone: true,
+        }
 },{
         id: "eutrochium-purpureum",
         scientificName: "Eutrochium purpureum",
@@ -754,6 +770,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1, max: 2},
         flowerColor: ["orange"],
         bloomMonths: ["jul", "aug", "sep"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "rudbeckia-hirta",
         scientificName: "Rudbeckia hirta",
@@ -765,6 +784,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1, max: 1},
         flowerColor: ["yellow"],
         bloomMonths: ["jun", "jul", "aug", "sep", "oct"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "ruellia-humilis",
         scientificName: "Ruellia humilis",
@@ -822,6 +844,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 2, max: 3},
         flowerColor: ["yellow"],
         bloomMonths: ["aug", "sep", "oct"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "solidago-flexicaulis",
         scientificName: "Solidago flexicaulis",
@@ -844,6 +869,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: .75, max: 1},
         flowerColor: ["yellow"],
         bloomMonths: ["aug", "sep"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "oligoneuron-ohioense",
         scientificName: "Oligoneuron ohioense",
@@ -911,6 +939,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1.5, max: 2},
         flowerColor: ["blue"],
         bloomMonths: ["aug", "sep", "oct"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "symphyotrichum-novae-angliae",
         scientificName: "Symphyotrichum novae-angliae",
@@ -922,6 +953,9 @@ export const forbs: Plant[] = [{
         widthFt: {min: 2, max: 3},
         flowerColor: ["purple"],
         bloomMonths: ["aug", "sep", "oct"],
+        traits: {
+                keystone: true,
+        },
 },{
         id: "symphyotrichum-oolentangiense",
         scientificName: "Symphyotrichum oolentangiense",

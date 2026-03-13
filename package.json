@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "svgo -r -f public/illustrations",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "optimize-svgs": "svgo -r -f public/illustrations"
+    "optimize-svgs": "svgo -r -f public/to-optimize"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
