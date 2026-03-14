@@ -862,6 +862,7 @@ export const forbs: Plant[] = [{
         id: "solidago-nemoralis",
         scientificName: "Solidago nemoralis",
         commonName: "Old Field Goldenrod",
+        otherNames: ["Gray Goldenrod"],
         plantType: "forb",
         sun: ["full", "part"],
         soilMoisture: ["med", "dry"],

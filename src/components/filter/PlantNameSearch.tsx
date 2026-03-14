@@ -1,5 +1,5 @@
 import { usePlantFilter } from "@/contexts/PlantFilterContext";
-import { Box, FormControl, TextField } from "@mui/material";
+import { FormControl, TextField } from "@mui/material";
 import { FilterLabel } from "./FilterLabel";
 
 export const PlantNameSearch = ({size, ...props}) => {

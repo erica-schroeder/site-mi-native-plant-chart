@@ -2,8 +2,8 @@ import { plantsWithAverages } from "@/data/plants";
 import type { BloomMonth, Color, Plant, SoilMoisture, SunLevel } from "@/types/plant";
 import type { PlantFilters, Trait } from "@/types/plantFilters";
 import Fuse from "fuse.js";
-import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from "react";
-import { isEqual } from 'lodash-es';
+import { debounce, isEqual } from "lodash-es";
+import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 const PlantFilterContext = createContext(null);
 
@@ -21,6 +21,21 @@ const emptyFilters = {
 export const PlantFilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [filteredPlants, setFilteredPlants] = useState<Plant[]>(plantsWithAverages);
   const [filters, setFilters] = useState<PlantFilters>(emptyFilters);
+  const [pendingFilters, setPendingFilters] = useState<PlantFilters>(emptyFilters);
+
+  const debouncedSetFilters = useCallback(
+    debounce((newFilters: PlantFilters) => {
+      setFilters(newFilters);
+    }, 200),
+    []
+  );
+
+  // Update pending filters instantly, debounce the actual filter update
+  const updateFilters = (partial: Partial<PlantFilters>) => {
+    const newFilters = { ...pendingFilters, ...partial };
+    setPendingFilters(newFilters);
+    debouncedSetFilters(newFilters);
+  };
 
   useEffect(() => {
     applyFilters();
@@ -110,22 +125,23 @@ export const PlantFilterProvider: React.FC<{ children: ReactNode }> = ({ childre
   const clearFilters = () => {
     setFilteredPlants(plantsWithAverages);
     setFilters(emptyFilters);
+    setPendingFilters(emptyFilters);
   };
 
   const value = {
-    filters,
+    filters: pendingFilters,
     applyFilters,
     clearFilters,
-    setSearchQuery: (searchQuery: string) => setFilters(f => ({ ...f, searchQuery })),
-    setFlowerColors: (flowerColors: Color[]) => setFilters(f => ({ ...f, flowerColors })),
-    setBloomMonths: (bloomMonths: BloomMonth[]) => setFilters(f => ({ ...f, bloomMonths })),
-    setSunLevels: (sunLevels: SunLevel[]) => setFilters(f => ({ ...f, sunLevels })),
-    setSoilMoistures: (soilMoistures: SoilMoisture[]) => setFilters(f => ({ ...f, soilMoistures })),
-    setHeightRange: (heightRange: [number, number]) => setFilters(f => ({ ...f, heightRange })),
-    setTraits: (traits: Trait[]) => setFilters(f => ({ ...f, traits })),
-    setCaterpillars: (caterpillars: string[]) => setFilters(f => ({ ...f, caterpillars })),
+    setSearchQuery: (searchQuery: string) => updateFilters({ searchQuery }),
+    setFlowerColors: (flowerColors: Color[]) => updateFilters({ flowerColors }),
+    setBloomMonths: (bloomMonths: BloomMonth[]) => updateFilters({ bloomMonths }),
+    setSunLevels: (sunLevels: SunLevel[]) => updateFilters({ sunLevels }),
+    setSoilMoistures: (soilMoistures: SoilMoisture[]) => updateFilters({ soilMoistures }),
+    setHeightRange: (heightRange: [number, number]) => updateFilters({ heightRange }),
+    setTraits: (traits: Trait[]) => updateFilters({ traits }),
+    setCaterpillars: (caterpillars: string[]) => updateFilters({ caterpillars }),
     filteredPlants,
-    areFiltersEmpty: () => isEqual(filters, emptyFilters),
+    areFiltersEmpty: () => isEqual(pendingFilters, emptyFilters),
   };
 
   return (
