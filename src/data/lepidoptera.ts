@@ -18,4 +18,10 @@ export const lepidoptera: Lepidoptera[] = [{
     commonName: "Black Swallowtail",
     family: "Papilionidae",
     icon: 'icons/lepidoptera-blackswallowtail-icon.svg'
+},{
+    id: "euphydryas-phaeton",
+    scientificName: "Euphydryas phaeton",
+    commonName: "Baltimore Checkerspot",
+    family: "Nymphalidae",
+    icon: 'icons/lepidoptera-baltimorecheckerspot-icon.svg'
 }];

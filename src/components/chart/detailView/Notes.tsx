@@ -18,7 +18,7 @@ export const Notes = ({ plant }) => {
                 variant="fieldLabel"
                 sx={{ color: "text.secondary" }}
             >
-                Erica's Notes
+                Notes
             </Typography>
 
             {plant.notes

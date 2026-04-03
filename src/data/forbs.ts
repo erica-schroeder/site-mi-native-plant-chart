@@ -203,7 +203,8 @@ export const forbs: Plant[] = [{
 },{
         id: "penstemon-hirsutus",
         scientificName: "Penstemon hirsutus",
-        commonName: "Hairy Beardtongue",
+        commonName: "Lavender Beardtongue",
+        otherNames: ["Hairy Beardtongue"],
         plantType: "forb",
         sun: ["full", "part"],
         soilMoisture: ["med", "dry"],
@@ -211,7 +212,7 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1, max: 1},
         flowerColor: ["purple"],
         bloomMonths: ["may", "jun"],
-        notes: "I am so sorry to this plant for being dubbed hairy beardtongue. It's way too beautiful to deserve that name.",
+        notes: "I am so sorry to this plant for originally being named hairy beardtongue. No one deserves that.",
         illustration: {
              svg: "penstemon-hirsutus.svg",
              heightFt: 1.5,
@@ -279,7 +280,7 @@ export const forbs: Plant[] = [{
 },{
         id: "zizia-aurea",
         scientificName: "Zizia aurea",
-        commonName: "Golden Alexander",
+        commonName: "Golden Alexanders",
         plantType: "forb",
         sun: ["full", "part"],
         soilMoisture: ["med"],
@@ -379,10 +380,18 @@ export const forbs: Plant[] = [{
         plantType: "forb",
         sun: ["full"],
         soilMoisture: ["wet"],
-        heightFt: {min: 5, max: 5},
-        widthFt: {min: 2, max: 3},
+        heightFt: {min: 2, max: 4},
+        widthFt: {min: 1, max: 2},
         flowerColor: ["white"],
         bloomMonths: ["jul", "aug", "sep"],
+        hostCaterpillars: [
+                "euphydryas-phaeton",
+        ],
+        illustration: {
+             svg: "chelone-glabra.svg",
+             heightFt: 3,
+             widthFt: 1.5,
+        },
 },{
         id: "coreopsis-lanceolata",
         scientificName: "Coreopsis lanceolata",
@@ -477,7 +486,12 @@ export const forbs: Plant[] = [{
         bloomMonths: ["jul", "aug", "sep"],
         traits: {
             keystone: true,
-        }
+        },
+        illustration: {
+             svg: "eutrochium-maculatum.svg",
+             heightFt: 5,
+             widthFt: 3.5,
+        },
 },{
         id: "eutrochium-purpureum",
         scientificName: "Eutrochium purpureum",
@@ -507,10 +521,15 @@ export const forbs: Plant[] = [{
         plantType: "forb",
         sun: ["full", "part", "shade"],
         soilMoisture: ["med"],
-        heightFt: {min: 2, max: 2},
-        widthFt: {min: 1, max: 1},
+        heightFt: {min: 1.5, max: 2},
+        widthFt: {min: 1, max: 1.5},
         flowerColor: ["purple"],
         bloomMonths: ["apr", "may", "jun", "jul"],
+        illustration: {
+             svg: "geranium-maculatum.svg",
+             heightFt: 1.5,
+             widthFt: 1.5,
+        },
 },{
         id: "heliopsis-helianthoides",
         scientificName: "Heliopsis helianthoides",
