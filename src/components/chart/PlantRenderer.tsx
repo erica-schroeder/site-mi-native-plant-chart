@@ -6,6 +6,7 @@ import { PlantLabel } from './PlantLabel';
 import { PlantPlaceholder } from './PlantPlaceholder';
 
 const HOST_PLANT_INDICATOR_SIZE = 48;
+const BUTTERFLY_WIDTH_FT = .75;
 const LABEL_Y_OFFSET = 15;
 const BLOOM_OVERLAY_WIDTH_FT = 1.9;
 
@@ -28,6 +29,8 @@ export const PlantRenderer = ({
   const bloomWidthPx = xScale(BLOOM_OVERLAY_WIDTH_FT) - xScale(0);
   const bloomXPx = slotCenterPx - bloomWidthPx / 2;
   const bloomYPx = chartHeightPx;
+
+  const butterflyWidthPx = xScale(BUTTERFLY_WIDTH_FT) - xScale(0);
 
   return (
     <g key={plant.id}>
@@ -82,7 +85,7 @@ export const PlantRenderer = ({
       />
 
       <PlantLabel plant={plant} x={labelXPx} y={labelYPx} />
-      <HostPlantIndicator plant={plant} size={HOST_PLANT_INDICATOR_SIZE} x={plantXPx} y={plantYPx - HOST_PLANT_INDICATOR_SIZE} />
+      <HostPlantIndicator plant={plant} size={butterflyWidthPx} x={plantXPx} y={plantYPx - butterflyWidthPx} />
       <BloomMonthIndicator bloomMonths={plant.bloomMonths} flowerColors={plant.flowerColor} width={bloomWidthPx} x={bloomXPx} y={bloomYPx} />
     </g>
   );

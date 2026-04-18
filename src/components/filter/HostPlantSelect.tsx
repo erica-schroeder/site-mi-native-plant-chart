@@ -13,11 +13,12 @@ import { FilterLabel } from "./FilterLabel"
 import { usePlantFilter } from "@/contexts/PlantFilterContext";
 import type { Lepidoptera } from "@/types/lepidoptera";
 
+const sortedCaterpillars = [...lepidoptera].sort((a, b) => a.commonName.localeCompare(b.commonName));
 
 export const HostPlantSelect = ({ size, fontSize }) => {
     const { filters, setCaterpillars } = usePlantFilter();
 
-    const valueObjects = lepidoptera.filter((l) => filters.caterpillars.includes(l.id));
+    const valueObjects = sortedCaterpillars.filter((l) => filters.caterpillars.includes(l.id));
 
     const filterOptions = createFilterOptions<Lepidoptera>({
         stringify: (option) =>
@@ -31,7 +32,7 @@ export const HostPlantSelect = ({ size, fontSize }) => {
             </FilterLabel>
             <Autocomplete
                 multiple
-                options={lepidoptera}
+                options={sortedCaterpillars}
                 value={valueObjects}
                 onChange={(_, newValue) => {
                     const ids = newValue.map((option) => option.id);
@@ -80,25 +81,33 @@ export const HostPlantSelect = ({ size, fontSize }) => {
 
                 renderValue={(selected, getItemProps) => (
                     <Box sx={{ display: "flex", gap: 0.5, flexWrap: "wrap" }}>
-                        {selected.map((option, index) => (
-                            <Chip
-                                {...getItemProps(index)}
-                                variant="outlined"
-                                key={option.id}
-                                icon={
-                                    <Box
-                                        component="img"
-                                        src={option.icon}
-                                        alt=""
-                                        sx={{ width: 40, height: 40 }}
-                                    />
-                                }
-                                label={option.commonName}
-                                sx={{
-                                    fontSize: fontSize
-                                }}
-                            />
-                        ))}
+
+                        {selected.map((option, index) => {
+                            const { onDelete, ...itemProps } = getItemProps(index);
+                            return (
+                                <Chip
+                                    {...itemProps}
+                                    variant="outlined"
+                                    key={option.id}
+                                    onDelete={() => {
+                                        const newIds = filters.caterpillars.filter(id => id !== option.id);
+                                        setCaterpillars(newIds);
+                                    }}
+                                    icon={
+                                        <Box
+                                            component="img"
+                                            src={option.icon}
+                                            alt=""
+                                            sx={{ width: 40, height: 40 }}
+                                        />
+                                    }
+                                    label={option.commonName}
+                                    sx={{
+                                        fontSize: fontSize
+                                    }}
+                                />
+                            );
+                        })}
                     </Box>
                 )}
             />

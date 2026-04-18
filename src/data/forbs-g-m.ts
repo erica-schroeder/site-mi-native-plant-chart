@@ -29,6 +29,11 @@ export const forbs: Plant[] = [{
         widthFt: {min: 2, max: 3},
         flowerColor: ["purple"],
         bloomMonths: ["jul", "aug", "sep"],
+        illustration: {
+             svg: "monarda-fistulosa.svg",
+             heightFt: 4,
+             widthFt: 2.75,
+        },
 },{
         id: "liatris-spicata",
         scientificName: "Liatris spicata",
