@@ -6,6 +6,8 @@ import { ZoomProvider } from "@/contexts/ZoomContext";
 import { plantsWithAverages } from "@/data/plants";
 import { Alert, Box, Divider, Pagination, Slide, Snackbar, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
+import { PinnedPlantsAccordion } from "./PinnedPlantsAccordion";
+import { PinnedPlantsProvider } from "@/contexts/PinnedPlantsContext";
 
 const PAGE_SIZE = 20;
 
@@ -44,11 +46,18 @@ const PlantChartPageContent = () => {
 
             <Divider sx={{ my: 2 }} />
 
+<PinnedPlantsProvider>
             <ZoomProvider>
                 <Stack alignItems="center">
                     <PlantSearch allPlants={plantsWithAverages} />
                 </Stack>
+
+                    <Box sx={{ pt: 4, px: 10 }}>
+                        <PinnedPlantsAccordion />
+                    </Box>
+
                 {filteredPlants.length === 0
+
                     ?
                     <Typography sx={{ mt: 4, textAlign: 'center', color: 'gray' }}>
                         No plants match your filters. Try adjusting bloom color, height, sun, or soil requirements.
@@ -120,6 +129,7 @@ const PlantChartPageContent = () => {
                 </Box>
                 */}
             </ZoomProvider>
+</PinnedPlantsProvider>
 
             <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}

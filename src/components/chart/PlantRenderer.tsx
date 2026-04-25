@@ -4,6 +4,8 @@ import { BloomMonthIndicator } from './BloomMonthIndicator';
 import { HostPlantIndicator } from './HostPlantIndicator';
 import { PlantLabel } from './PlantLabel';
 import { PlantPlaceholder } from './PlantPlaceholder';
+import { usePinnedPlants } from '@/contexts/PinnedPlantsContext';
+import { PIN_SIZE, PIN_PADDING, PinButton } from './PinButton';
 
 const HOST_PLANT_INDICATOR_SIZE = 48;
 const BUTTERFLY_WIDTH_FT = .75;
@@ -20,6 +22,7 @@ export const PlantRenderer = ({
   chartHeightPx
 }) => {
   const { setActivePlant } = usePlantDetailDisplay();
+  const { pinnedIds, togglePin } = usePinnedPlants();
   const xScale = useXScale('x');
   const yScale = useYScale('y');
 
@@ -31,6 +34,10 @@ export const PlantRenderer = ({
   const bloomYPx = chartHeightPx;
 
   const butterflyWidthPx = xScale(BUTTERFLY_WIDTH_FT) - xScale(0);
+
+  const isPinned = pinnedIds.includes(plant.id);
+  const pinX = plantXPx + widthPx - (PIN_SIZE + PIN_PADDING * 2) - 4;
+  const pinY = plantYPx + 4;
 
   return (
     <g key={plant.id}>
@@ -87,6 +94,13 @@ export const PlantRenderer = ({
       <PlantLabel plant={plant} x={labelXPx} y={labelYPx} />
       <HostPlantIndicator plant={plant} size={butterflyWidthPx} x={plantXPx} y={plantYPx - butterflyWidthPx} />
       <BloomMonthIndicator bloomMonths={plant.bloomMonths} flowerColors={plant.flowerColor} width={bloomWidthPx} x={bloomXPx} y={bloomYPx} />
+
+            <PinButton
+        x={pinX}
+        y={pinY}
+        pinned={isPinned}
+        onClick={() => togglePin(plant.id)}
+      />
     </g>
   );
 }
