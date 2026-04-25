@@ -200,6 +200,11 @@ export const forbs: Plant[] = [{
         widthFt: {min: 1, max: 2},
         flowerColor: ["purple"],
         bloomMonths: ["may", "jun", "jul"],
+        illustration: {
+             svg: "iris-virginica.svg",
+             heightFt: 3,
+             widthFt: 2,
+        },
 },{
         id: "lespedeza-capitata",
         scientificName: "Lespedeza capitata",
